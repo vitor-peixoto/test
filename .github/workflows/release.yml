@@ -1,38 +1,35 @@
-# .github/release.yml
-
 name: Release
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - master
 
 jobs:
   release:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-22.04
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node Environment & Authenticate
+        uses: actions/setup-node@v3
         with:
-          node-version: "14.x"
-      - name: Install dependencies
-        run: npm ci
+          node-version: 16
+          ref: ${{ github.sha }}
+          fetch-depth: "0"
+
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set up Git user.
         run: |
           git config --global user.email "vitorpeixoto14@hotmail.com"
           git config --global user.name "vitor-peixoto"
       - name: "Bump version"
-        uses: anothrNick/github-tag-action@1.29.0
-        with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        tag_prefix: v
-        tag_suffix: ""
-        initial_version: 0.1.0
-        base_version: 0.1.0
-        version_regex: '(\\d+\\.\\d+\\.\\d+)'
-        version_file: "package.json"
-        update_if_empty: true
-      - name: Push new tag
-        run: git push --follow-tags origin ${{ env.GITHUB_REF }}
+        uses: anothrNick/github-tag-action@1.61.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
