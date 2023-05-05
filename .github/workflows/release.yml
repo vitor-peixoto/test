@@ -27,9 +27,12 @@ jobs:
         run: |
           git config --global user.email "vitorpeixoto14@hotmail.com"
           git config --global user.name "vitor-peixoto"
-      - name: "Bump version"
+      - name: Bump version
         uses: anothrNick/github-tag-action@1.61.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_BRANCHES: master
+          INITIAL_VERSION: 0.0.0
           WITH_V: true
+      - name: Push new tag
+        run: git push --follow-tags origin ${{ env.GITHUB_REF }}
