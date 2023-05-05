@@ -1,13 +1,15 @@
 name: Release
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - master
 
 jobs:
   release:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -16,7 +18,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: "https://npm.pkg.github.com"
+          ref: ${{ github.sha }}
+          fetch-depth: "0"
+
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -25,15 +29,7 @@ jobs:
           git config --global user.email "vitorpeixoto14@hotmail.com"
           git config --global user.name "vitor-peixoto"
       - name: "Bump version"
-        uses: anothrNick/github-tag-action@1.29.0
-        with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        tag_prefix: v
-        tag_suffix: ""
-        initial_version: 0.1.0
-        base_version: 0.1.0
-        version_regex: '(\\d+\\.\\d+\\.\\d+)'
-        version_file: "package.json"
-        update_if_empty: true
-      - name: Push new tag
-        run: git push --follow-tags origin ${{ env.GITHUB_REF }}
+        uses: anothrNick/github-tag-action@1.61.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
