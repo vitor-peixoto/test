@@ -20,7 +20,6 @@ jobs:
           node-version: 16
           ref: ${{ github.sha }}
           fetch-depth: "0"
-
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -32,4 +31,5 @@ jobs:
         uses: anothrNick/github-tag-action@1.61.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: false
+          RELEASE_BRANCHES: master
+          WITH_V: true
