@@ -12,7 +12,7 @@ jobs:
     runs-on: ubunto-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout/v2
+        uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
