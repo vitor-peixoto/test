@@ -5,3 +5,4 @@ function helloword() {
 }
 
 exports.helloword = helloword;
+//# sourceMappingURL=helloword.js.map

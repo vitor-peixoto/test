@@ -3,3 +3,4 @@ function helloword() {
 }
 
 export { helloword };
+//# sourceMappingURL=helloword.mjs.map

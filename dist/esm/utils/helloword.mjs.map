@@ -1,0 +1,1 @@
+{"version":3,"file":"helloword.mjs","sources":["../../../src/utils/helloword.ts"],"sourcesContent":["export function helloword() {\r\n  console.log(\"hello world\");\r\n}\r\n"],"names":["helloword","console","log"],"mappings":"AAAO,SAASA,SAASA,GAAG;AAC1BC,EAAAA,OAAO,CAACC,GAAG,CAAC,aAAa,CAAC,CAAA;AAC5B;;;;"}
