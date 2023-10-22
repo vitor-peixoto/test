@@ -29,5 +29,6 @@ jobs:
         run: |
           git config --global user.email "vitorpeixoto14@hotmail.com"
           git config --global user.name "vitor-peixoto"
+
       - name: publish
-        run: npm run publish
+        run: npm publish
