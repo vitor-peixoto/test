@@ -1,4 +1,4 @@
-name: Release
+name: Deployment
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -29,6 +29,5 @@ jobs:
         run: |
           git config --global user.email "vitorpeixoto14@hotmail.com"
           git config --global user.name "vitor-peixoto"
-
-      = name: publish
+      - name: publish
         run: npm run publish
