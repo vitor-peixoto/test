@@ -4,7 +4,7 @@
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "publish": "cd dist && npm publish"
+    "publish": "cd dist && yarn bump && npm publish"
   },
   "keywords": [],
   "author": "",

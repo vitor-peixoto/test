@@ -38,7 +38,8 @@
   "homepage": "https://github.com/vitor-peixoto/test#readme",
   "scripts": {
     "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript && tsc -p ./src/tsconfig.json --declaration --emitDeclarationOnly",
-    "watch": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript --watch"
+    "watch": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript --watch",
+    "bump": "git push --tags && git push"
   },
   "dependencies": {
     "@vitor-peixoto/test": "^0.1.0",
