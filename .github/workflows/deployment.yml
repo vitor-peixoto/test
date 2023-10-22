@@ -20,15 +20,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          ref: ${{ github.sha }}
-          fetch-depth: "0"
+          registry-url: "https://npm.pkg.github.com"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Set up Git user.
-        run: |
-          git config --global user.email "vitorpeixoto14@hotmail.com"
-          git config --global user.name "vitor-peixoto"
 
       - name: publish
         run: npm publish
