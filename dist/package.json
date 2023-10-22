@@ -1,15 +1,48 @@
 {
   "name": "@vitor-peixoto/test",
-  "version": "0.1.0-alpha.0",
-  "description": "test in general...",
-  "main": "./index.js",
-  "keywords": [
-    "test"
-  ],
-  "author": "vitorpeixoto14@hotmail.com",
-  "license": "ISC",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+  "version": "0.1.0",
+  "description": "This package helps you create sections for you website pages.",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./mjs/index.js",
+      "require": "./cjs/index.js"
+    }
   },
-  "dependencies": {}
+  "keywords": [
+    "website",
+    "builder",
+    "page",
+    "section",
+    "blocks",
+    "components"
+  ],
+  "author": {
+    "email": "vitorpeixoto14@hotmail.com",
+    "name": "vitor peixoto"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-react": "^7.22.15",
+    "@babel/preset-typescript": "^7.23.2",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-image": "^3.0.3",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@svgr/rollup": "^8.1.0",
+    "@types/node": "^20.8.7",
+    "@types/react": "^18.2.31",
+    "rollup": "^4.1.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
 }
