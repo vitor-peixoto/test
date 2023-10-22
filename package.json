@@ -1,10 +1,11 @@
 {
   "name": "@vitor-peixoto/test",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "publish": "cd dist && yarn bump && npm publish"
+    "publish": "cd dist && yarn bump && npm publish",
+    "bump": "git push --tags && git push"
   },
   "keywords": [],
   "author": "",
