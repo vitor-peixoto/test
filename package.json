@@ -4,7 +4,7 @@
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "prepublishOnly": "cd dist"
+    "publish": "cd dist && npm publish"
   },
   "keywords": [],
   "author": "",
