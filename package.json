@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "@vitor-peixoto/test",
   "version": "0.1.0-alpha.0",
   "description": "",
   "main": "./dist/index.js",
