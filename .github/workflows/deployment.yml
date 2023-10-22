@@ -5,8 +5,12 @@ on:
     branches:
       - master
 
+permissions:
+  packages: write
+  contents: write
+
 jobs:
-  release:
+  build:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
