@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const packageJson = require("../package.json");
-const dist = path.join(__dirname, "dist");
+const dist = path.join(__dirname, "..", "dist");
 
 if (!fs.existsSync(dist)) {
   fs.mkdirSync(dist, { recursive: true });
