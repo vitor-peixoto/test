@@ -4,7 +4,7 @@
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "publish": "node ../scripts/main.js && cd dist && npm publish",
+    "publish": "node ./scripts/main.js && cd dist && npm publish",
     "bump": "yarn version && git push --tags"
   },
   "keywords": [],
