@@ -4,7 +4,7 @@ const packageJson = require("../package.json");
 const dist = path.join(__dirname, "dist");
 
 if (!fs.existsSync(dist)) {
-  fs.mkdirSync(dist);
+  fs.mkdirSync(dist, { recursive: true });
 }
 
 fs.writeFileSync(
