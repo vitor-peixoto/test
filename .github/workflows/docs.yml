@@ -25,7 +25,7 @@ jobs:
           cd docs
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add remote docs https://github.com/vitor-peixoto/test.wiki.git
+          git remote add docs https://github.com/vitor-peixoto/test.wiki.git
           git pull docs master
           git add .
           git commit -m "Update wiki content"
