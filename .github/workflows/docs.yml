@@ -25,9 +25,10 @@ jobs:
           cd docs
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git pull origin master
+          git add remote docs https://github.com/vitor-peixoto/test.wiki.git
+          git pull docs master
           git add .
           git commit -m "Update wiki content"
-          git push origin master
+          git push docs master
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
