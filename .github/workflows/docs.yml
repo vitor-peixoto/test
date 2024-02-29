@@ -12,6 +12,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Setup Node Environment & Authenticate
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: "https://npm.pkg.github.com"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install git
         run: sudo apt-get install git -y
       - name: Update git
