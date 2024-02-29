@@ -20,8 +20,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install git
-        run: sudo apt-get install git -y
       - name: Update git
         run: |
           cd docs
