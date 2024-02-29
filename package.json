@@ -12,5 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "glob": "^10.3.10"
+  }
 }
