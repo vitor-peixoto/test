@@ -16,9 +16,8 @@ jobs:
         run: sudo apt-get install git -y
       - name: Update git
         run: |
-        cd docs
-        git pull origin master
-        git add .
-        git commit -m "Update wiki content"
-        git push origin master
-     
+          cd docs
+          git pull origin master
+          git add .
+          git commit -m "Update wiki content"
+          git push origin master
