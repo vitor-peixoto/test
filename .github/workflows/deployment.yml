@@ -24,7 +24,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: publish
-        run: npm run publish
-      - name: update documentation
-        run: npm run init-git:docs && npm run publish:docs
+      # - name: publish
+      #   run: npm run publish
