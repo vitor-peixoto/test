@@ -28,4 +28,5 @@ jobs:
         run: npm run publish
 
       - name: update documentation
-        run: cd docs && git remote add master https://github.com/vitor-peixoto/test.wiki.git && git add . && git push origin master
+        run: npm run init-git:docs
+        run: npm run publish:docs

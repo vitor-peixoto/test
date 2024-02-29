@@ -1,11 +1,13 @@
 {
   "name": "@vitor-peixoto/test",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
     "publish": "node ./scripts/main.js && cd dist && npm publish",
-    "bump": "yarn version && git push --tags"
+    "bump": "yarn version && git push --tags",
+    "init-git:docs": "cd docs && git init && git remote add docs https://github.com/vitor-peixoto/test.wiki.git",
+    "publish:docs": "cd docs && git add . && git commit -m\"Update documentation\" && git push docs master"
   },
   "keywords": [],
   "author": "",
