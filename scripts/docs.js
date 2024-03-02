@@ -1,24 +1,26 @@
-const { exec, execSync } = require("child_process");
+const { execSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
-const mainRepoPath = path.join(__dirname, "..");
-const wikiRepoURL = "https://github.com/vitor-peixoto/test.wiki.git";
-const docsFolder = "docs";
-const remoteBranch = "origin/master"; // Change this to match your remote branch
+const config = {
+  mainRepoPath: path.join(__dirname, ".."),
+  wikiRepoURL: "https://github.com/vitor-peixoto/test.wiki.git",
+  wikiFolderName: "docs",
+  remoteBranch: "origin/master",
+};
 
 // Function to check for changes
 function checkForChanges() {
   try {
     // Compare local branch with the remote branch
-    const diffOutput = execSync(`git diff --name-only ${remoteBranch}`, {
-      cwd: mainRepoPath,
+    const diffOutput = execSync(`git diff --name-only ${config.remoteBranch}`, {
+      cwd: config.mainRepoPath,
       encoding: "utf-8",
     });
 
     const changedFiles = diffOutput
       .split("\n")
-      .filter((file) => file.startsWith(docsFolder + "/"));
+      .filter((file) => file.startsWith(config.wikiFolderName + "/"));
 
     if (changedFiles.length > 0) {
       console.log(
@@ -26,32 +28,46 @@ function checkForChanges() {
       );
 
       // Initialize Git repository within the docs folder
-      execSync("git init", { cwd: path.join(mainRepoPath, docsFolder) });
+      execSync("git init", {
+        cwd: path.join(config.mainRepoPath, config.wikiFolderName),
+      });
 
       // Add all files
-      execSync("git add .", { cwd: path.join(mainRepoPath, docsFolder) });
+      execSync("git add .", {
+        cwd: path.join(config.mainRepoPath, config.wikiFolderName),
+      });
 
       // Commit changes
       execSync('git commit -m "Update docs folder"', {
-        cwd: path.join(mainRepoPath, docsFolder),
+        cwd: path.join(config.mainRepoPath, config.wikiFolderName),
       });
 
       // Set remote URL
-      execSync(`git remote add origin ${wikiRepoURL}`, {
-        cwd: path.join(mainRepoPath, docsFolder),
+      execSync(`git remote add origin ${config.wikiRepoURL}`, {
+        cwd: path.join(config.mainRepoPath, config.wikiFolderName),
       });
 
       // Push changes to the wiki repository
       execSync("git push -u origin master --force", {
-        cwd: path.join(mainRepoPath, docsFolder),
+        cwd: path.join(config.mainRepoPath, config.wikiFolderName),
       });
 
       console.log("Changes pushed to wiki.");
 
       // Remove the Git repository from the docs folder
-      fs.rmdirSync(path.join(mainRepoPath, docsFolder, ".git"), {
-        recursive: true,
-      });
+      if (
+        fs.existsSync(
+          path.join(config.mainRepoPath, config.wikiFolderName, ".git")
+        )
+      ) {
+        fs.rmSync(
+          path.join(config.mainRepoPath, config.wikiFolderName, ".git"),
+          {
+            recursive: true,
+            force: true,
+          }
+        );
+      }
     } else {
       console.log("No changes detected in docs folder.");
     }
